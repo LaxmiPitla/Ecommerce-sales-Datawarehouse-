@@ -1,0 +1,23 @@
+/* 
+Creating the table in silver layer , If table already exists then it gets dropped and recreated ,
+all columns are loaded from bronze to silver , along with it the dwh creation date column is included in silver layer, 
+It records the date and time when data got loaded from bronze to silver table.
+*/
+
+IF OBJECT_ID('silver.ecom_sales' , 'U') IS NOT NULL
+	DROP TABLE silver.ecom_sales;
+CREATE TABLE silver.ecom_sales(
+order_id INT,
+order_date DATE,
+customer_id INT ,
+product_category NVARCHAR(50),
+region NVARCHAR(50),
+quantity INT,
+unit_price DECIMAL(10,2),
+discount decimal(5,2),
+payment_method NVARCHAR(50),
+delivery_days INT,
+customer_rating DECIMAL(3,1),
+revenue DECIMAL(12,2),
+dwh_create_date DATETIME2 DEFAULT GETDATE()
+);
