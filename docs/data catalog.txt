@@ -1,0 +1,33 @@
+DATA DICTIONARY FOR GOLD LAYER
+
+OVERVIEW:
+ The Gold Layer is the business level data representation, structured to support analytical and reporting uses cases. It consists of 
+Dimension tables and fact tables for specific business metrics   
+
+
+1. gold.dim_customers
+	Purpose: stores customers details and demographics details
+	Columns:
+	Column_name	Data Type	Description
+	Customer_key	INT	Surrogate key uniquely identifying each customer record in the dimension table
+	Customer_id	INT	Unique numerical identifier assigned to each customer
+	Customer_rating	DECIMAL	Integers in decimal form rounded upto 1
+	region	NVARCHAR(50)	Region of residence where customer resides 
+	
+
+2. gold.fact_sales 
+	Purpose: Stores transactional sales data for analytical purposes
+	Columns:
+	Column_name	Data Type	Description
+	Customer_key	INT 	Surrogate key linking in order to customer dimension table  
+	Customer_id 	INT	Unique numerical identifier assigned to each customer , business key 
+	Order_id	INT	Unique key in the table
+	Product_category	NVARCHAR(50)	The category product belongs to (e.g: Home, Electronics,etc)
+	Order_date	DATE	The Date order got placed 
+	quantity	INT	The no .of quantity of the product 
+	Unit_price	DECIMAL	Price of single product
+	discount	DECIMAL	Discount given on MRP
+	Payment_method 	NVARCHAR(50)	The mode of money transaction between customer and business (e.g: COD, wallet)
+	Delivery_days 	INT 	The no of business days product got delivered to customers
+	Revenue 	DECIMAL	Total money generated per order 
+ 
